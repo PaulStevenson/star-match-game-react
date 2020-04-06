@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './PlayNumber.scss';
+
 // Color Theme
 const colors = {
   available: 'lightgray',
@@ -8,7 +10,7 @@ const colors = {
   candidate: 'deepskyblue',
 };
 
-const PlayNumber = props => (
+export const PlayNumber = props => (
   <button
     className='number'
     style={{ backgroundColor: colors[props.status] }}
@@ -17,5 +19,3 @@ const PlayNumber = props => (
     {props.number}
   </button>
 );
-
-export default PlayNumber;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import PlayAgain from './PlayAgain';
-import PlayNumber from './PlayNumber';
-import { StarDisplay } from './StarDisplay/index';
+import { PlayNumber } from './PlayNumber';
+import { StarDisplay } from './StarDisplay';
 
 import utils from '../utilities/Maths';
 
