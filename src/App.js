@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Game from './components/Game';
+import { Game } from './components/Game';
 
 const StarMatch = () => {
   const [gameId, setGameId] = useState(1);

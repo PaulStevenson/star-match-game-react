@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import PlayAgain from './PlayAgain';
-import { PlayNumber } from './PlayNumber';
-import { StarDisplay } from './StarDisplay';
+import { PlayAgain } from '../PlayAgain';
+import { PlayNumber } from '../PlayNumber';
+import { StarDisplay } from '../StarDisplay';
 
-import utils from '../utilities/Maths';
+import utils from '../../utilities/Maths';
+
+import './Game.scss';
 
 const useGameState = () => {
   const [stars, setStars] = useState(utils.random(1, 9));
@@ -43,7 +45,7 @@ const useGameState = () => {
   };
 };
 
-const Game = props => {
+export const Game = props => {
   const {
     stars,
     availableNums,
@@ -107,5 +109,3 @@ const Game = props => {
     </div>
   );
 };
-
-export default Game;
