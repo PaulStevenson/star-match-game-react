@@ -1,49 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+
+import { useGameState } from './useGameState';
 
 import { PlayAgain } from '../PlayAgain';
 import { PlayNumber } from '../PlayNumber';
 import { StarDisplay } from '../StarDisplay';
+import { Timer } from '../Timer';
 
 import utils from '../../utilities/Maths';
 
 import './Game.scss';
-
-const useGameState = () => {
-  const [stars, setStars] = useState(utils.random(1, 9));
-  const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
-  const [candidateNums, setCandidateNums] = useState([]);
-  const [secondsLeft, setSecondsLeft] = useState(10);
-
-  useEffect(() => {
-    if (secondsLeft > 0 && availableNums.length > 0) {
-      const timerId = setTimeout(() => {
-        setSecondsLeft(secondsLeft - 1);
-      }, 1000);
-      return () => clearTimeout(timerId);
-    }
-  });
-
-  const setGameState = newCandidatesNums => {
-    if (utils.sum(newCandidatesNums) !== stars) {
-      setCandidateNums(newCandidatesNums);
-    } else {
-      const newAvailableNums = availableNums.filter(
-        n => !newCandidatesNums.includes(n),
-      );
-      setStars(utils.randomSumIn(newAvailableNums, 9));
-      setAvailableNums(newAvailableNums);
-      setCandidateNums([]);
-    }
-  };
-
-  return {
-    stars,
-    availableNums,
-    candidateNums,
-    secondsLeft,
-    setGameState,
-  };
-};
 
 export const Game = props => {
   const {
@@ -105,7 +71,7 @@ export const Game = props => {
           ))}
         </div>
       </div>
-      <div className='timer'>Time Remaining: {secondsLeft}</div>
+      <Timer remainingTime={secondsLeft} />
     </div>
   );
 };
