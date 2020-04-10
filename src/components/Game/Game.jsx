@@ -44,23 +44,24 @@ export const Game = props => {
       currentStatus === 'available'
         ? candidateNums.concat(number)
         : candidateNums.filter(cn => cn !== number);
+
     setGameState(newCandidatesNums);
   };
 
   return (
-    <div className='game'>
-      <div className='help'>
+    <div className='game' data-testid='game'>
+      <div className='instruction' data-testid='instruction'>
         Pick 1 or more numbers that sum to the number of stars
       </div>
       <div className='body'>
-        <div className='left'>
+        <div className='left' data-testid='left-side'>
           {gameStatus !== 'active' ? (
             <PlayAgain onClick={props.startNewGame} gameStatus={gameStatus} />
           ) : (
             <StarDisplay count={stars} />
           )}
         </div>
-        <div className='right'>
+        <div className='right' data-testid='right-side'>
           {utils.range(1, 9).map(number => (
             <PlayNumber
               key={number}
